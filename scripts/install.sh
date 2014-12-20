@@ -11,15 +11,13 @@ sudo apt-get install -y mysql-server-5.6
 #
 # Configure MySQL Remote Access
 #
-#mysql --user="root" --password="secret" -e "GRANT ALL ON *.* TO root@'localhost' IDENTIFIED BY 'secret' WITH GRANT OPTION;"
-#service mysql restart
-#
-#mysql --user="root" --password="secret" -e "CREATE USER 'magento'@'localhost' IDENTIFIED BY 'secret';"
-#mysql --user="root" --password="secret" -e "GRANT ALL ON *.* TO 'magento'@'localhost' IDENTIFIED BY 'secret' WITH GRANT OPTION;"
-#mysql --user="root" --password="secret" -e "GRANT ALL ON *.* TO 'magento'@'%' IDENTIFIED BY 'secret' WITH GRANT OPTION;"
-#mysql --user="root" --password="secret" -e "FLUSH PRIVILEGES;"
-#mysql --user="root" --password="secret" -e "CREATE DATABASE magento;"
-#service mysql restart
+MYSQLAUTH="--user=root --password=secret"
+mysql $MYSQLAUTH -e "GRANT ALL ON *.* TO root@'localhost' IDENTIFIED BY 'secret' WITH GRANT OPTION;"
+mysql $MYSQLAUTH -e "CREATE USER 'magento'@'localhost' IDENTIFIED BY 'secret';"
+mysql $MYSQLAUTH -e "GRANT ALL ON *.* TO 'magento'@'localhost' IDENTIFIED BY 'secret' WITH GRANT OPTION;"
+mysql $MYSQLAUTH -e "GRANT ALL ON *.* TO 'magento'@'%' IDENTIFIED BY 'secret' WITH GRANT OPTION;"
+mysql $MYSQLAUTH -e "FLUSH PRIVILEGES;"
+mysql $MYSQLAUTH -e "CREATE DATABASE magento;"
 
 # Install Apache and PHP
 sudo apt-get install -y apache2 php5 php5-mhash php5-mcrypt php5-curl php5-cli php5-mysql php5-gd php5-intl curl git
@@ -43,6 +41,7 @@ sudo a2enmod rewrite
 
 # Remove default Apache config - we supply our own for Magento.
 sudo rm -f /etc/apache2/sites-enabled/000-default.conf
+#sudo a2dissite 000-default
 
 # mcrypt.ini appears to be missing from apt-get install. Needed for PHP mcrypt library to be enabled.
 sudo cp /vagrant/config/20-mcrypt.ini /etc/php5/cli/conf.d/20-mcrypt.ini
@@ -50,4 +49,4 @@ sudo cp /vagrant/config/20-mcrypt.ini /etc/php5/apache2/conf.d/20-mcrypt.ini
 
 # Add the Apache virtual host file
 sudo cp /vagrant/config/apache_default_vhost /etc/apache2/sites-enabled/magento2.conf
-
+sudo apache2ctl restart
