@@ -48,7 +48,8 @@ Vagrant.configure(2) do |config|
     #vb.gui = true
   
     # OS + MySQL + Apache
-    vb.memory = "2048"
+    vb.memory = 2048
+    vb.cpus = 2
   end
   
   # View the documentation for the provider you are using for more
