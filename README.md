@@ -53,7 +53,9 @@ Finally, accesses your site on your laptop/desktop using http://localhost:8080/
 Feedback welcome!
 
 
+See also https://alankent.wordpress.com/2014/12/21/reducing-magento-2-install-pain-through-virtualization/
+
+
 (Future ideas include parameterizing so you can pick the web server (Apache or
 Nginx), pick the database server (MySQL, MariaDB, Percona etc), add Redis,
 Varnish etc auxilary servers. One day!)
-database 
