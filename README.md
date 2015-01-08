@@ -11,6 +11,8 @@ Ansible. Serious developers might like to look at other Vagrant images.
 
 See http://vagrantup.com/ for Vagrant installation instructions.
 
+Make sure to install the latest version of VirtualBox and VirtualBox Addons before proceeding.
+
 If you want a stable Vagrant set up, clone or keep a copy - I am going to
 rework as I see fit for a while yet.
 
