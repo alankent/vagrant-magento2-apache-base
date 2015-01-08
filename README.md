@@ -58,6 +58,7 @@ Feedback welcome!
 See also
 * Blog post https://alankent.wordpress.com/2014/12/21/reducing-magento-2-install-pain-through-virtualization/
 * Alernative: Nicer than mine, but with all files inside VM https://github.com/ryanstreet/magento2-vagrant
+* Another one: https://github.com/rgranadino/mage2_vagrant, using NFS for better hosting performance
 
 (Future ideas include parameterizing so you can pick the web server (Apache or
 Nginx), pick the database server (MySQL, MariaDB, Percona etc), add Redis,
