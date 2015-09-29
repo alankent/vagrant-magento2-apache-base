@@ -62,4 +62,4 @@ See also
 
 (Future ideas include parameterizing so you can pick the web server (Apache or
 Nginx), pick the database server (MySQL, MariaDB, Percona etc), add Redis,
-Varnish etc auxilary servers. One day!)
+Varnish etc auxiliary servers. One day!)
