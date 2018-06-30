@@ -23,7 +23,7 @@ mysql $MYSQLAUTH -e "CREATE DATABASE magento;"
 sudo apt-get -y update
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get -y update
-sudo apt-get -y install php5.6 php5.6-mcrypt php5.6-mbstring php5.6-curl php5.6-cli php5.6-mysql php5.6-gd php5.6-intl php5.6-xsl php5.6-zip git
+sudo apt-get -y install php7.0 php7.0-mcrypt php7.0-mbstring php7.0-curl php7.0-cli php7.0-mysql php7.0-gd php7.0-intl php7.0-xsl php7.0-zip php7.0-bcmath php7.0-soap git
 
 # Install Composer.
 cd /tmp
@@ -46,9 +46,6 @@ sudo a2enmod rewrite
 sudo rm -f /etc/apache2/sites-enabled/000-default.conf
 #sudo a2dissite 000-default
 
-# mcrypt.ini appears to be missing from apt-get install. Needed for PHP mcrypt library to be enabled.
-sudo cp /vagrant/config/20-mcrypt.ini /etc/php5/cli/conf.d/20-mcrypt.ini
-sudo cp /vagrant/config/20-mcrypt.ini /etc/php5/apache2/conf.d/20-mcrypt.ini
 
 # Add the Apache virtual host file
 sudo cp /vagrant/config/apache_default_vhost /etc/apache2/sites-enabled/magento2.conf
